@@ -1,4 +1,3 @@
-import data.transform
 import services.abuseipdb_conn
 
 if __name__ == "__main__":

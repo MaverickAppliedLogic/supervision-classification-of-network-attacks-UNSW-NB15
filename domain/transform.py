@@ -1,12 +1,12 @@
 import pandas as pd
-from data import extraction as de
+from domain import extraction as ext
 
 _df = None
 
 def _get_df():
     global _df
     if _df is None:
-        _df = de.get_data()
+        _df = ext.get_data()
     return _df
 
 
@@ -23,6 +23,23 @@ def get_network_conn_info():
     }
     return pd.DataFrame(nci)
 
+def get_ip_reputation():
+    df = _get_df()
+    rep = {
+        'srcIP': df['srcip'],
+        'malicious': df['vt_malicious'],
+        'suspicious': df['vt_suspicious'],
+        'reputation': df['vt_reputation'],
+        'country': df['vt_country'],
+        'votes_malicious': df['vt_votes_malicious'],
+        'score': df['ab_score'],
+        'total_reports': df['ab_total_reports'],
+        'distinct_users': df['ab_distinct_users'],
+        'is_tor': df['ab_is_tor'],
+        'is_whitelisted': df['ab_is_whitelisted'],
+        'last_reported': df['ab_last_reported']
+    }
+    return pd.DataFrame(rep)
 
 def get_traffic_stats():
     df = _get_df()
