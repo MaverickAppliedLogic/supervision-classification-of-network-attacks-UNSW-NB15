@@ -1,4 +1,4 @@
-import services.abuseipdb_conn
+from domain import cleaning
 
 if __name__ == "__main__":
-    print(services.abuseipdb_conn.check_ip_abuseipdb('187.190.35.163'))
+    print(clean.get_clean_data())
