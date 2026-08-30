@@ -1,4 +1,4 @@
-from domain import cleaning
+import domain
 
 if __name__ == "__main__":
-    print(clean.get_clean_data())
+    model = domain.gen_model()

@@ -1,15 +1,14 @@
-# domain/cleaning.py
+# etl/cleaning.py
 import pandas as pd
-from domain import extraction as ex
+from pandas import DataFrame
+
 
 _clean_df = None
 
-def get_clean_data() -> pd.DataFrame:
+def get_clean_data(df: DataFrame) -> pd.DataFrame:
     global _clean_df
     if _clean_df is not None:
         return _clean_df
-
-    df = ex.get_data()
 
     # 1. Eliminar duplicados
     before = len(df)
